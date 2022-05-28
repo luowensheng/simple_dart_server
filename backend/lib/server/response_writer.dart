@@ -49,9 +49,11 @@ class ResponseWriter {
 
   @override
   String toString() {
-    return "$protocol $statusCode $status\r\nContent-Type: $contentType\r\n\r\n\r\n$content";
-  }
+    var headerStr = headers.entries
+        .map((e) => "${e.key}: ${e.value}\r\n")
+        .toList()
+        .join("");
 
-  
-  
+    return "$protocol $statusCode $status\r\nContent-Type: $contentType\r\n$headerStr\r\n\r\n$content";
+  }
 }
