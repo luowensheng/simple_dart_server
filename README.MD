@@ -1,6 +1,8 @@
-```
+```dart
 void run() {
+
   var app = Server();
+  
   app.get("/home", (responseWriter, request) {
     responseWriter.setContent("""
        <h1>Hello Surla</h1>
